@@ -16,7 +16,7 @@ func getMenus(role string, currentPath string) []Menu {
 	var menus []Menu
 	menuURLs := map[string]string{
 		"Meja":       "/tables",
-		"Pesanan":    "/pesanan",
+		"Pesanan":    "/orders",
 		"User":       "/users",
 		"Menu":       "/menus",
 		"Pembayaran": "/pembayaran",

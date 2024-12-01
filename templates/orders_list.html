@@ -1,0 +1,37 @@
+{{ define "content" }}
+<h1>Orders</h1>
+<a class="btn btn-primary mb-3" href="/orders/create">Add Order</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Table Number</th>
+            <th>Menu</th>
+            <th>Quantity</th>
+            <th>Order Status</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range .AllOrders }}
+        <tr>
+            <td>{{ .OrderID }}</td>
+            <td>{{ .NomorMeja }}</td>
+            <td>{{ .Menu.NamaMenu }}</td>
+            <td>{{ .Jumlah }}</td>
+            <td>{{ .StatusPesanan }}</td>
+            <td>{{ .CreatedAt }}</td>
+            <td>{{ .UpdatedAt }}</td>
+            <td>
+                <a class="btn btn-sm btn-warning" href="/orders/edit/{{ .OrderID }}">Edit</a>
+                <form action="/orders/delete/{{ .OrderID }}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {{ end }}
+    </tbody>
+</table>
+{{ end }}
