@@ -1,0 +1,27 @@
+{{ define "content" }}
+<h1>CRUD Operations</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range .Users }}
+        <tr>
+            <td>{{ .UserID }}</td>
+            <td>{{ .Nama }}</td>
+            <td>{{ .Role }}</td>
+            <td>
+                <a href="/edit/{{ .UserID }}">Edit</a> | 
+                <a href="/delete/{{ .UserID }}">Delete</a>
+            </td>
+        </tr>
+        {{ end }}
+    </tbody>
+</table>
+<a href="/create">Create New User</a>
+{{ end }}

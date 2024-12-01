@@ -1,0 +1,30 @@
+{{ define "content" }}
+<h1>Edit User</h1>
+<form action="/users/edit/{{ .UserID }}" method="post">
+    <div class="mb-3">
+        <label for="nama" class="form-label">Name</label>
+        <input type="text" class="form-control" id="nama" name="nama" value="{{ .User.Nama }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="no_telp" class="form-label">Phone</label>
+        <input type="text" class="form-control" id="no_telp" name="no_telp" value="{{ .User.NoTelp }}">
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" value="{{ .User.Email }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" name="username" value="{{ .User.Username }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="role" class="form-label">Role</label>
+        <select class="form-control" id="role" name="role" required>
+            <option value="admin" {{ if eq .User.Role "admin" }}selected{{ end }}>Admin</option>
+            <option value="owner" {{ if eq .User.Role "owner" }}selected{{ end }}>Owner</option>
+            <option value="waiters" {{ if eq .User.Role "waiters" }}selected{{ end }}>Waiters</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+{{ end }}
