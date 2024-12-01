@@ -7,15 +7,15 @@ type Menu struct {
 }
 
 var roleMenus = map[string][]string{
-	"owner":  {"Meja", "Pesanan", "User", "Menu", "Pembayaran"},
-	"waiter": {"Meja", "Pesanan"},
-	"admin":  {"User", "Menu", "Pembayaran"},
+	"owner":   {"Meja", "Pesanan", "User", "Menu", "Pembayaran"},
+	"waiters": {"Meja", "Pesanan"},
+	"admin":   {"User", "Menu", "Pembayaran"},
 }
 
 func getMenus(role string, currentPath string) []Menu {
 	var menus []Menu
 	menuURLs := map[string]string{
-		"Meja":       "/meja",
+		"Meja":       "/tables",
 		"Pesanan":    "/pesanan",
 		"User":       "/users",
 		"Menu":       "/menus",

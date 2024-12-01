@@ -1,0 +1,35 @@
+{{ define "content" }}
+<h1>Tables</h1>
+<a class="btn btn-primary mb-3" href="/tables/create">Add Table</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Table Number</th>
+            <th>Capacity</th>
+            <th>Status</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range .AllTables }}
+        <tr>
+            <td>{{ .TableID }}</td>
+            <td>{{ .NomorMeja }}</td>
+            <td>{{ .Kapasitas }}</td>
+            <td>{{ .Status }}</td>
+            <td>{{ .CreatedAt }}</td>
+            <td>{{ .UpdatedAt }}</td>
+            <td>
+                <a class="btn btn-sm btn-warning" href="/tables/edit/{{ .TableID }}">Edit</a>
+                <form action="/tables/delete/{{ .TableID }}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {{ end }}
+    </tbody>
+</table>
+{{ end }}

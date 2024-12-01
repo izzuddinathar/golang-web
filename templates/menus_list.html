@@ -1,0 +1,37 @@
+{{ define "content" }}
+<h1>Menus</h1>
+<a class="btn btn-primary mb-3" href="/menus/create">Add Menu</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Menu Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range .AllMenus }}
+        <tr>
+            <td>{{ .MenuID }}</td>
+            <td>{{ .NamaMenu }}</td>
+            <td>{{ .Deskripsi }}</td>
+            <td>{{ .Harga }}</td>
+            <td>{{ .Kategori }}</td>
+            <td>{{ .CreatedAt }}</td>
+            <td>{{ .UpdatedAt }}</td>
+            <td>
+                <a class="btn btn-sm btn-warning" href="/menus/edit/{{ .MenuID }}">Edit</a>
+                <form action="/menus/delete/{{ .MenuID }}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {{ end }}
+    </tbody>
+</table>
+{{ end }}

@@ -1,0 +1,22 @@
+{{ define "content" }}
+<h1>Add Table</h1>
+<form action="/tables/create" method="post">
+    <div class="mb-3">
+        <label for="nomor_meja" class="form-label">Table Number</label>
+        <input type="number" class="form-control" id="nomor_meja" name="nomor_meja" required>
+    </div>
+    <div class="mb-3">
+        <label for="kapasitas" class="form-label">Capacity</label>
+        <input type="number" class="form-control" id="kapasitas" name="kapasitas" required>
+    </div>
+    <div class="mb-3">
+        <label for="status" class="form-label">Status</label>
+        <select class="form-control" id="status" name="status" required>
+            <option value="tersedia">Available</option>
+            <option value="dipesan">Reserved</option>
+            <option value="terisi">Occupied</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{{ end }}

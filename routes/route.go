@@ -20,11 +20,27 @@ func SetupRoutes(router *gin.Engine) {
 	auth.Use(middlewares.RequireLogin)
 	{
 		auth.GET("/dashboard", handlers.ShowDashboard)
+
 		auth.GET("/users", handlers.ListUsers)
 		auth.GET("/users/create", handlers.ShowCreateUser)
 		auth.POST("/users/create", handlers.CreateUser)
 		auth.GET("/users/edit/:id", handlers.ShowEditUser)
 		auth.POST("/users/edit/:id", handlers.UpdateUser)
 		auth.POST("/users/delete/:id", handlers.DeleteUser)
+
+		auth.GET("/menus", handlers.ListMenus)
+		auth.GET("/menus/create", handlers.ShowCreateMenu)
+		auth.POST("/menus/create", handlers.CreateMenu)
+		auth.GET("/menus/edit/:id", handlers.ShowEditMenu)
+		auth.POST("/menus/edit/:id", handlers.UpdateMenu)
+		auth.POST("/menus/delete/:id", handlers.DeleteMenu)
+
+		auth.GET("/tables", handlers.ListTables)
+		auth.GET("/tables/create", handlers.ShowCreateTable)
+		auth.POST("/tables/create", handlers.CreateTable)
+		auth.GET("/tables/edit/:id", handlers.ShowEditTable)
+		auth.POST("/tables/edit/:id", handlers.UpdateTable)
+		auth.POST("/tables/delete/:id", handlers.DeleteTable)
+
 	}
 }
