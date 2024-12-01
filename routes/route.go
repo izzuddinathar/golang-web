@@ -49,5 +49,12 @@ func SetupRoutes(router *gin.Engine) {
 		auth.POST("/orders/edit/:id", handlers.UpdateOrder)
 		auth.POST("/orders/delete/:id", handlers.DeleteOrder)
 
+		auth.GET("/payments", handlers.ListPayments)
+		auth.GET("/payments/create", handlers.ShowCreatePayment)
+		auth.POST("/payments/create", handlers.CreatePayment)
+		auth.GET("/payments/edit/:id", handlers.ShowEditPayment)
+		auth.POST("/payments/edit/:id", handlers.UpdatePayment)
+		auth.POST("/payments/delete/:id", handlers.DeletePayment)
+
 	}
 }

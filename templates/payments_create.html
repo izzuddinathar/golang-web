@@ -1,0 +1,35 @@
+{{ define "content" }}
+<h1>Add Payment</h1>
+<form action="/payments/create" method="post">
+    <div class="mb-3">
+        <label for="nomor_meja" class="form-label">Table Number</label>
+        <select class="form-control" id="nomor_meja" name="nomor_meja" required>
+            {{ range .Tables }}
+            <option value="{{ .NomorMeja }}">{{ .NomorMeja }}</option>
+            {{ end }}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="menu_id" class="form-label">Menu</label>
+        <select class="form-control" id="menu_id" name="menu_id" required>
+            {{ range .MenuList }}
+            <option value="{{ .MenuID }}">{{ .NamaMenu }}</option>
+            {{ end }}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="jumlah" class="form-label">Quantity</label>
+        <input type="number" class="form-control" id="jumlah" name="jumlah" required>
+    </div>
+    <div class="mb-3">
+        <label for="metode_pembayaran" class="form-label">Payment Method</label>
+        <select class="form-control" id="metode_pembayaran" name="metode_pembayaran" required>
+            <option value="tunai">Cash</option>
+            <option value="kartu kredit">Credit Card</option>
+            <option value="kartu debit">Debit Card</option>
+            <option value="qris">QRIS</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{{ end }}

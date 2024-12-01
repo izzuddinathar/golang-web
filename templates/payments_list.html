@@ -1,0 +1,39 @@
+{{ define "content" }}
+<h1>Payments</h1>
+<a class="btn btn-primary mb-3" href="/payments/create">Add Payment</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Table Number</th>
+            <th>Menu</th>
+            <th>Quantity</th>
+            <th>Payment Method</th>
+            <th>Status</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range .AllPayments }}
+        <tr>
+            <td>{{ .PaymentID }}</td>
+            <td>{{ .NomorMeja }}</td>
+            <td>{{ .Menu.NamaMenu }}</td> <!-- Access the associated Menu's name -->
+            <td>{{ .Jumlah }}</td>
+            <td>{{ .MetodePembayaran }}</td>
+            <td>{{ .Status }}</td>
+            <td>{{ .CreatedAt }}</td>
+            <td>{{ .UpdatedAt }}</td>
+            <td>
+                <a class="btn btn-sm btn-warning" href="/payments/edit/{{ .PaymentID }}">Edit</a>
+                <form action="/payments/delete/{{ .PaymentID }}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {{ end }}
+    </tbody>
+</table>
+{{ end }}

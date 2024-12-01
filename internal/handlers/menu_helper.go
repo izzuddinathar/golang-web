@@ -19,7 +19,7 @@ func getMenus(role string, currentPath string) []Menu {
 		"Pesanan":    "/orders",
 		"User":       "/users",
 		"Menu":       "/menus",
-		"Pembayaran": "/pembayaran",
+		"Pembayaran": "/payments",
 		"Dashboard":  "/dashboard",
 		"CRUD":       "/crud",
 		"Profile":    "/profile",

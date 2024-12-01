@@ -1,0 +1,42 @@
+{{ define "content" }}
+<h1>Edit Payment</h1>
+<form action="/payments/edit/{{ .Payment.PaymentID }}" method="post">
+    <div class="mb-3">
+        <label for="nomor_meja" class="form-label">Table Number</label>
+        <select class="form-control" id="nomor_meja" name="nomor_meja" required>
+            {{ range .Tables }}
+            <option value="{{ .NomorMeja }}" {{ if eq .NomorMeja $.Payment.NomorMeja }}selected{{ end }}>{{ .NomorMeja }}</option>
+            {{ end }}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="menu_id" class="form-label">Menu</label>
+        <select class="form-control" id="menu_id" name="menu_id" required>
+            {{ range .MenuList }}
+            <option value="{{ .MenuID }}" {{ if eq .MenuID $.Payment.MenuID }}selected{{ end }}>{{ .NamaMenu }}</option>
+            {{ end }}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="jumlah" class="form-label">Quantity</label>
+        <input type="number" class="form-control" id="jumlah" name="jumlah" value="{{ .Payment.Jumlah }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="metode_pembayaran" class="form-label">Payment Method</label>
+        <select class="form-control" id="metode_pembayaran" name="metode_pembayaran" required>
+            <option value="tunai" {{ if eq .Payment.MetodePembayaran "tunai" }}selected{{ end }}>Cash</option>
+            <option value="kartu kredit" {{ if eq .Payment.MetodePembayaran "kartu kredit" }}selected{{ end }}>Credit Card</option>
+            <option value="kartu debit" {{ if eq .Payment.MetodePembayaran "kartu debit" }}selected{{ end }}>Debit Card</option>
+            <option value="qris" {{ if eq .Payment.MetodePembayaran "qris" }}selected{{ end }}>QRIS</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="status" class="form-label">Status</label>
+        <select class="form-control" id="status" name="status" required>
+            <option value="belum dibayar" {{ if eq .Payment.Status "belum dibayar" }}selected{{ end }}>Not Paid</option>
+            <option value="lunas" {{ if eq .Payment.Status "lunas" }}selected{{ end }}>Paid</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+{{ end }}
